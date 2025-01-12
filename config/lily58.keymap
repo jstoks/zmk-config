@@ -29,6 +29,13 @@
             bindings = <&kp EQUAL &kp GT>;
             label = "TYPE_FAT_ARROW";
         };
+
+        elixir_arrow: elixir_arrow {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp PIPE &kp GT>;
+            label = "ELIXIR_ARROW";
+        };
     };
 
     keymap {
@@ -43,11 +50,11 @@
             //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
 
             bindings = <
-&kp TILDE  &kp N1  &kp N2  &kp N3    &kp N4    &kp N5                                  &kp N6     &kp N7    &kp N8     &kp N9   &kp N0    &kp GRAVE
-&kp TAB    &kp Q   &kp W   &kp F     &kp P     &kp G                                   &kp J      &kp L     &kp U      &kp Y    &kp SEMI  &kp MINUS
-&kp UNDER  &kp A   &kp R   &kp S     &lt 1 T   &kp D                                   &kp H      &lt 1 N   &kp E      &kp I    &kp O     &kp SQT
-&kp LSHFT  &kp Z   &kp X   &kp C     &kp V     &kp B      &kp ESCAPE    &kp BACKSPACE  &kp K      &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
-                           &kp LALT  &kp LGUI  &kp LCTRL  &kp SPACE     &kp RET        &kp RCTRL  &kp BSPC  &kp RGUI
+&kp TILDE  &kp N1  &kp N2  &kp N3    &kp N4    &kp N5                                  &kp N6     &kp N7               &kp N8         &kp N9   &kp N0    &kp EQUAL
+&kp TAB    &kp Q   &kp W   &kp F     &kp P     &kp G                                   &kp J      &kp L                &kp U          &kp Y    &kp SEMI  &kp MINUS
+&kp UNDER  &kp A   &kp R   &kp S     &lt 1 T   &kp D                                   &kp H      &lt 2 N              &kp E          &kp I    &kp O     &kp SQT
+&kp LSHFT  &kp Z   &kp X   &kp C     &kp V     &kp B      &kp ESCAPE    &kp BACKSPACE  &kp K      &kp M                &kp COMMA      &kp DOT  &kp FSLH  &kp RSHFT
+                           &kp LALT  &kp LGUI  &kp LCTRL  &kp ENTER     &kp SPACE      &kp RCTRL  &mt RIGHT_GUI GRAVE  &kp RIGHT_ALT
             >;
         };
 
@@ -60,11 +67,21 @@
             //                     |      |      |      |        |  |       |      |       |       |
 
             bindings = <
-&trans     &trans              &trans          &trans          &trans           &trans                                 &trans       &trans     &trans     &trans    &trans     &trans
-&kp GRAVE  &kp N1              &kp N2          &kp UP          &kp N4           &kp N5                                 &kp N6       &kp N7     &kp N8     &kp N9    &kp N0     &trans
-&kp F1     &kp LA(LEFT_ARROW)  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LA(RIGHT_ARROW)                    &type_this   &kp LEFT   &kp DOWN   &kp UP    &kp RIGHT  &trans
-&none      &none               &kp F9          &kp F10         &kp F11          &kp F12              &trans    &trans  &kp KP_PLUS  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT   &kp BSLH
-                                               &trans          &trans           &trans               &trans    &trans  &trans       &trans     &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans       &trans           &trans                &trans                 &trans         &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &type_this   &type_fat_arrow  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp COLON      &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &type_arrow  &trans           &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp PIPE       &kp DOUBLE_QUOTES
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp DOLLAR   &elixir_arrow    &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp BACKSLASH  &trans
+                        &trans  &trans  &trans  &trans    &trans  &trans       &trans           &trans
+            >;
+        };
+
+        layer_2 {
+            bindings = <
+&trans       &trans        &trans    &trans          &trans     &trans                           &kp F6  &trans  &trans  &trans  &trans  &trans
+&kp LG(TAB)  &trans        &trans    &kp UP_ARROW    &trans     &trans                           &trans  &trans  &trans  &trans  &trans  &trans
+&trans       &kp LA(LEFT)  &kp LEFT  &kp DOWN_ARROW  &kp RIGHT  &kp LA(RIGHT)                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans       &trans        &trans    &trans          &trans     &trans         &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                                     &trans          &trans     &trans         &trans    &trans  &trans  &trans  &trans
             >;
         };
     };
